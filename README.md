@@ -26,12 +26,12 @@ Then, run the following command :
    pkg> add https://github.com/atoptima/Coluna.jl.git
 ```
 
-## Features
+## Features & Roadmap
 
-We aim to integrate to Coluna the state-of-the-art techniques used for 
-branch-and-cut-and-price algorithms.
+State-of-the-art features are continuously integrated into Coluna to achieve best performance on such
+branch-and-cut-and-price approaches.
 
-As functionality goes, we aim to provide the support for:
+Here is a list of functionality that are implemented or will be in the near fueture. We aim to provide support for these.
 
 - [x] Dantzig-Wolfe decomposition 
 - [ ] Benders decomposition
@@ -44,6 +44,7 @@ As functionality goes, we aim to provide the support for:
 - [ ] Preprocessing specific to reformulated problems / cleaning up of large scale formulations 
 - [ ] stabilisation and other convergence speed-up methods
 - [ ] Strong-branching 
+- [ ] Sepcialized branching schemes to colunn generation approaches
 - [ ] Parallelisation of the Branch-and-Bound Tree Search 
 
 ## Authors

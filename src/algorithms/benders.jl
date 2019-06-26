@@ -58,7 +58,8 @@ function insert_cuts_in_master!(master_form::Formulation,
                                 sp_form::Formulation,
                                 primal_sols::Vector{PrimalSolution{S}},
                                 dual_sols::Vector{DualSolution{S}}) where {S}
-    
+
+    @show "insert_cuts_in_master!"
 
     sp_uid = getuid(sp_form)
     nb_of_gen_cuts = 0
@@ -72,6 +73,7 @@ function insert_cuts_in_master!(master_form::Formulation,
     for k in 1:N
         primal_sol = primal_sols[k]
         dual_sol = dual_sols[k]
+        @show dual_sol
         # the solution value represent the cut violation at this stage
         if getvalue(dual_sol) > 0.0001 # TODO the cut feasibility tolerance
             nb_of_gen_cuts += 1
@@ -84,6 +86,7 @@ function insert_cuts_in_master!(master_form::Formulation,
                 master_form, name, primal_sol, dual_sol, duty; 
                 kind = kind, sense = sense
             )
+            @show bc
             @logmsg LogLevel(-2) string("Generated cut : ", name)
 
             # TODO: check if cut exists

@@ -205,7 +205,7 @@ function setprimaldualbendspsol!(f::Formulation,
                                  is_active::Bool = true,
                                  is_explicit::Bool = true,
                                  moi_index::MoiConstrIndex = MoiConstrIndex()) where {S<:AbstractObjSense}
-    
+    @show "setprimaldualbendspsol!"
     dps_id = generateconstrid(f)
     dps_data = ConstrData(getvalue(dual_sol), kind, sense, inc_val, is_active, is_explicit)
     dps = Constraint(dps_id, name, duty; constr_data = dps_data, moi_index = moi_index)
@@ -222,6 +222,7 @@ function setprimaldualbendspsol!(f::Formulation,
 
     for (constr_id, constr_val) in dual_sol
         dualbendspsol_matrix[constr_id, dps_id] = constr_val
+        @show "coef_matrix[constr_id,:]" coef_matrix[constr_id,:]
         for (var_id, constr_coef) in coef_matrix[constr_id,:]
             coef_matrix[dps_id, var_id] += constr_val * constr_coef
         end
